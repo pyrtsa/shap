@@ -217,8 +217,6 @@ def dependence_plot(ind, shap_values, features, feature_names=None, display_feat
             cb.ax.tick_params(length=0)
         cb.set_alpha(1)
         cb.outline.set_visible(False)
-        bbox = cb.ax.get_window_extent().transformed(pl.gcf().dpi_scale_trans.inverted())
-        cb.ax.set_aspect((bbox.height - 0.7) * 20)
 
     # handles any setting of xmax and xmin
     # note that we handle None,float, or "percentile(float)" formats
@@ -252,10 +250,6 @@ def dependence_plot(ind, shap_values, features, feature_names=None, display_feat
     pl.xlim(*xlim)
 
     # make the plot more readable
-    if interaction_index != ind:
-        pl.gcf().set_size_inches(7.5, 5)
-    else:
-        pl.gcf().set_size_inches(6, 5)
     pl.xlabel(name, color=axis_color, fontsize=13)
     pl.ylabel(labels['VALUE_FOR'] % name, color=axis_color, fontsize=13)
     if title is not None:

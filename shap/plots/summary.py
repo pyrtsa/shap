@@ -353,8 +353,8 @@ def summary_plot(shap_values, features=None, feature_names=None, max_display=Non
         y_pos = np.arange(len(feature_inds))
         left_pos = np.zeros(len(feature_inds))
 
-        class_inds = np.argsort([-np.abs(shap_values[i]).mean() for i in range(len(shap_values))])
-        for i,ind in enumerate(class_inds):
+        for ind in range(len(shap_values)):
+            i = ind
             global_shap_values = np.abs(shap_values[ind]).mean(0)
             pl.barh(
                 y_pos, global_shap_values[feature_inds], 0.7, left=left_pos, align='center',
