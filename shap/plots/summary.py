@@ -354,11 +354,10 @@ def summary_plot(shap_values, features=None, feature_names=None, max_display=Non
         left_pos = np.zeros(len(feature_inds))
 
         for ind in range(len(shap_values)):
-            i = ind
             global_shap_values = np.abs(shap_values[ind]).mean(0)
             pl.barh(
                 y_pos, global_shap_values[feature_inds], 0.7, left=left_pos, align='center',
-                color=color(i), label=class_names[ind]
+                color=color(ind), label=class_names[ind]
             )
             left_pos += global_shap_values[feature_inds]
         pl.yticks(y_pos, fontsize=13)
